@@ -144,7 +144,7 @@ label {
 }
 
 #container {
-  text-align: left;
+  text-align: center;
   overflow: auto;
   margin: 0 auto;
 }

@@ -110,8 +110,8 @@ input[type='text']:focus, input[type='password']:focus, textarea:focus {
 
 #container {
   text-align: center;
-  overflow: auto;
   margin: 0 auto;
+  padding-bottom: 2rem;
 }
 
 /********** header **********/

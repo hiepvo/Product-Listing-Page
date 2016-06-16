@@ -1,7 +1,6 @@
-
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 
 html {
-  overflow: -moz-scrollbars-vertical;
   margin: 0;
   padding: 0;
   font-size: 62.5%;
@@ -9,22 +8,15 @@ html {
 
 /*noinspection ALL*/
 body {
-  background: #f8f8fa url(images/pattern.png) left top repeat;
+  background: #f8f8fa url(images/pattern1.jpg) left top repeat;
   color: #222;
-  font-family: Lucida Grande ,Helvetica, Arial, Verdana;
   margin: 0;
   padding: 0;
   line-height: 1.8rem;
+  font-family: 'Gotham' 'Open Sans', sans-serif;
+  font-size: 1.4rem;
 }
 
-body, td, th, input, textarea, select, a {
-  font-size: 1.2rem;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
 
 h1 {
   color: #222;
@@ -33,7 +25,6 @@ h1 {
   font-weight: normal;
   text-align: center;
   text-rendering: optimizelegibility;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 h2 {
@@ -56,12 +47,6 @@ h4 {
   font-weight: bold;
 }
 
-p {
-  margin-top: 0;
-  margin-bottom: 2rem;
-  line-height: 2rem;
-}
-
 a, a:visited, a b {
   color: #222;
   text-decoration: none;
@@ -70,12 +55,8 @@ a, a:visited, a b {
 
 a:hover {
   text-decoration: none;
-  color: #000;
 }
 
-a img {
-  border: none;
-}
 
 .clear {
   clear: both;
@@ -94,7 +75,6 @@ input[type='text'], input[type='password'], textarea {
   margin-left: 0;
   margin-right: 0;
   font-size: 1.3rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -112,23 +92,8 @@ input[type='text']:focus, input[type='password']:focus, textarea:focus {
   transition: all 0.3s ease-in-out;
 }
 
-select {
-  background: #ffffff;
-  border: 0.1rem solid #dddddd;
-  padding: 0.5rem 0.2rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-label {
-  cursor: pointer;
-}
-
 /********** layout **********/
+
 .wrapper-box {
   max-width: 108rem;
   margin: 2rem auto;
@@ -137,7 +102,7 @@ label {
   border-top: 0.2rem solid #555555;
 }
 
-.main-wrapper {
+.wrapper {
   max-width: 100rem;
   margin: 0 auto;
   position: relative;
@@ -147,12 +112,6 @@ label {
   text-align: center;
   overflow: auto;
   margin: 0 auto;
-}
-
-#content {
-  min-height: 40rem;
-  margin-bottom: 1rem;
-  padding: 0 0 0 0;
 }
 
 /********** header **********/
@@ -295,7 +254,6 @@ label {
   padding: 0 1rem;
   color: #444;
   text-decoration: none;
-  font-size: 1.2rem;
   position: relative;
 }
 
@@ -313,11 +271,6 @@ label {
 
 #header .links a:hover {
   color: #D45C93;
-}
-
-#header #welcome {
-  color: #999999;
-  float: left;
 }
 
 /********** Mini Cart  ***********/
@@ -405,7 +358,6 @@ label {
   color: #999;
   font-size: 1rem;
   font-weight: normal;
-  font-family: Verdana, Geneva, sans-serif;
   display: block;
 }
 
@@ -451,17 +403,22 @@ a.button:hover, input.button:hover {
 
 /*********** box ***********/
 
-.box .box-heading, .welcome {
-  text-transform: uppercase;
+.heading-welcome {
   padding: 0 0 0 0;
   margin-bottom: 2rem;
   height: 3rem;
   line-height: 3rem;
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: #D45C93;
+  text-align: left;
   border-bottom: 0.1rem solid #ddd;
+}
 
+
+#welcome-desc {
+  text-align: left;
+  font-size: 1.8rem;
 }
 
 /*********** box products ***********/
@@ -492,7 +449,7 @@ a.button:hover, input.button:hover {
 }
 
 .box-product .name a {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
   line-height: 1.8rem;
   text-decoration: none;
@@ -511,7 +468,7 @@ a.button:hover, input.button:hover {
   margin: 0.5rem 0 1rem 0;
   padding: 0 0.8rem;
   color: #D45C93;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
 }
 
 .box-product .price-old {
@@ -526,18 +483,6 @@ a.button:hover, input.button:hover {
   font-weight: bold;
 }
 
-/*********** content ***********/
-#content .content {
-  padding: 1rem;
-  overflow: auto;
-  margin-bottom: 2rem;
-}
-
-
-#content p {
-  font-size: 1.4rem;
-}
-
-#header #search {
-  right: 300px;
+#footer {
+  padding-top: 10rem;
 }

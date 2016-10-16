@@ -4,11 +4,12 @@
   <meta charset = "UTF-8"/>
   <title>Product Listing Page</title>
   <link rel = "stylesheet" type = "text/css" href = "main.css"/>
+
 </head>
 <body>
 <div class = "wrapper-box">
   <div class = "wrapper">
-    <a style="font-size: 16px; color: #66afe9" href="index.html">Back to Home page</a>
+    <a style = "font-size: 16px; color: #66afe9" href = "index.html">Back to Home page</a>
     <header id = "header">
       <div class = "htop">
         <div id = "language"><span>Language<b></b></span>
@@ -29,7 +30,6 @@
       <section class = "hsecond">
         <div id = "logo"><a href = "index.html"><img src = "http://placehold.it/250x90" title = "logo" alt = ""/></a>
         </div>
-
         <div id = "search">
           <div class = "button-search"></div>
           <input type = "text" name = "search" placeholder = "Search" value = ""/>
@@ -37,9 +37,101 @@
         <section id = "cart">
           <div class = "heading">
             <h4><img width = "32" height = "32" alt = "" src = "images/cart-bg.png"></h4>
-            <a><span id = "cart-total">2 item(s) - $710.18</span></a></div>
-
+            <a><span id = "cart-total"><span id="totalItems">0</span> item(s) - <span id="totalPrices">$0</span></span></a></div>
         </section>
+        <div class = "shopping-cart">
+          <!-- Title -->
+          <div class = "title">
+            Shopping Cart
+          </div>
+          <!-- Product #1 -->
+          <div class = "item">
+            <div class = "buttons">
+              <span class = "delete-btn"></span>
+            </div>
+
+            <div class = "image">
+              <img src = "http://placehold.it/140x100" alt = ""/>
+            </div>
+
+            <div class = "description">
+              <span>Common Projects</span>
+              <span>Bball High</span>
+              <span>White</span>
+            </div>
+
+            <div class = "quantity">
+              <button class = "plus-btn" type = "button" name = "button">
+                <img src = "images/plus.svg" alt = ""/>
+              </button>
+              <input type = "text" name = "name" value = "1">
+              <button class = "minus-btn" type = "button" name = "button">
+                <img src = "images/minus.svg" alt = ""/>
+              </button>
+            </div>
+
+            <div class = "total-price">$549</div>
+          </div>
+
+          <!-- Product #2 -->
+          <div class = "item">
+            <div class = "buttons">
+              <span class = "delete-btn"></span>
+            </div>
+
+            <div class = "image">
+              <img src = "http://placehold.it/140x100" alt = ""/>
+            </div>
+
+            <div class = "description">
+              <span>Maison Margiela</span>
+              <span>Future Sneakers</span>
+              <span>White</span>
+            </div>
+
+            <div class = "quantity">
+              <button class = "plus-btn" type = "button" name = "button">
+                <img src = "images/plus.svg" alt = ""/>
+              </button>
+              <input type = "text" name = "name" value = "1">
+              <button class = "minus-btn" type = "button" name = "button">
+                <img src = "images/minus.svg" alt = ""/>
+              </button>
+            </div>
+
+            <div class = "total-price">$870</div>
+          </div>
+
+          <!-- Product #3 -->
+          <div class = "item">
+            <div class = "buttons">
+              <span class = "delete-btn"></span>
+              <span class = "like-btn"></span>
+            </div>
+
+            <div class = "image">
+              <img src = "http://placehold.it/140x100" alt = ""/>
+            </div>
+
+            <div class = "description">
+              <span>Our Legacy</span>
+              <span>Brushed Scarf</span>
+              <span>Brown</span>
+            </div>
+
+            <div class = "quantity">
+              <button class = "plus-btn" type = "button" name = "button">
+                <img src = "images/plus.svg" alt = ""/>
+              </button>
+              <input type = "text" name = "name" value = "1">
+              <button class = "minus-btn" type = "button" name = "button">
+                <img src = "images/minus.svg" alt = ""/>
+              </button>
+            </div>
+
+            <div class = "total-price">$349</div>
+          </div>
+        </div>
         <div class = "clear"></div>
       </section>
     </header>
@@ -60,18 +152,18 @@
         </div>
         <div class = "name"><a
             href = "">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $1.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod1"/>
         </div>
       </div>
       <div class = "box-product">
         <div class = "image"><a href = ""><img src = "http://placehold.it/200x210"
                                                alt = ""/></a></div>
         <div class = "name"><a href = "">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $2.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod2"/>
         </div>
       </div>
 
@@ -80,9 +172,9 @@
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "">product name</a></div>
         <div class = "price"><span class = "price-old">$9,99</span><span
-            class = "price-new">$9,99</span></div>
+            class = "price-new">$3.99</span></div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod3"/>
         </div>
       </div>
 
@@ -90,9 +182,9 @@
         <div class = "image"><a href = ""><img src = "http://placehold.it/200x210"
                                                alt = ""/></a></div>
         <div class = "name"><a href = "">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $4.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod4"/>
         </div>
       </div>
 
@@ -100,9 +192,9 @@
         <div class = "image"><a href = ""><img
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "">Product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $5.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod5"/>
         </div>
       </div>
 
@@ -111,9 +203,9 @@
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "
           ">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $6.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod6"/>
         </div>
       </div>
 
@@ -122,9 +214,9 @@
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "
           ">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $7.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod7"/>
         </div>
       </div>
 
@@ -133,9 +225,9 @@
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "
           ">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $8.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod8"/>
         </div>
       </div>
 
@@ -144,9 +236,9 @@
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "
           ">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $9.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod9"/>
         </div>
       </div>
 
@@ -155,9 +247,9 @@
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "
           ">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $10.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod10"/>
         </div>
       </div>
 
@@ -165,9 +257,9 @@
         <div class = "image"><a href = ""><img
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $11.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod11"/>
         </div>
       </div>
 
@@ -175,18 +267,20 @@
         <div class = "image"><a href = ""><img
             src = "http://placehold.it/200x210" alt = ""/></a></div>
         <div class = "name"><a href = "">product name</a></div>
-        <div class = "price"> $9,99</div>
+        <div class = "price"> $12.99</div>
         <div class = "cart">
-          <input type = "button" value = "Add to Cart" class = "button"/>
+          <input type = "button" value = "Add to Cart" class = "addButton" id="prod12"/>
         </div>
       </div>
     </div>
   </div>
   <!--Footer-->
-  <div id="footer">
+  <div id = "footer">
     <p>footer</p>
   </div>
   <!--Footer-->
 </div>
+<script src = "main.js"></script>
+<script src = "products.js"></script>
 </body>
 </html>

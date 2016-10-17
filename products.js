@@ -103,17 +103,17 @@
     }
   ];
 
-  var cart = [];
+  var cart  = [];
+  var total = 0.0;
 
   function addToCart(){
     var itemSpan  = document.getElementById("totalItems");
     var priceSpan = document.getElementById("totalPrices");
     var product   = getProduct(this.id);
-    var total     = 0;
     var newObj    = {};
     newObj.qty    = 1;
     newObj.prod   = product;
-
+    total += parseFloat(product.price);
     if(cart.length > 0){
       var indexOf = searchProduct(this.id);
       if(indexOf > -1){
@@ -126,8 +126,7 @@
     else{
       cart.push(newObj);
     }
-    console.log(cart);
-    var price           = document.createTextNode("$" + total);
+    var price           = document.createTextNode("$" + total.toFixed(2));
     var item            = document.createTextNode(cart.length.toString());
     itemSpan.innerText  = item.textContent;
     priceSpan.innerText = price.textContent
@@ -145,6 +144,7 @@
     return -1;
   }
 
+  //return product by product id
   function getProduct(prodId){
     var result = "";
     var i      = 0;
@@ -154,14 +154,79 @@
       }
     }
     return result;
+  }
+
+  function createShoppingCart(){
+    var strCart = "";
+
+    var loader = document.getElementById('cartLoader');
+    var i      = 0;
+    var len    = cart.length;
+    for(i; i < len; i++){
+      strCart += '<div class = "item">';
+      strCart += '<div class = "buttons">';
+      strCart += '<span class = "delete-btn"></span>';
+      strCart += '</div>';
+      strCart += '<div class = "image">';
+      strCart += '<img src = "http://placehold.it/140x100" alt = ""/>';
+      strCart += '</div>';
+      strCart += '<div class = "description">';
+      strCart += '<span>' + cart[i].prod.desc + '</span>';
+      strCart += '</div>';
+      strCart += '<div class = "quantity">';
+      strCart += '<button id="plus' + cart[i].prod.id + '" class = "plus-btn" type = "button" name = "button">';
+      strCart += '<img src = "images/plus.svg" alt = ""/>';
+      strCart += '</button>';
+      strCart += '<input type = "text" name = "quantity" value = "' + cart[i].qty + '">';
+      strCart += '<button id="minus' + cart[i].prod.id + '" class = "minus-btn" type = "button" name = "button">';
+      strCart += '<img src = "images/minus.svg" alt = ""/>';
+      strCart += '</button>';
+      strCart += '</div>';
+      strCart += '<div class = "total-price">$' + cart[i].prod.price + '</div>';
+      strCart += '</div>';
+      loader.innerHTML = strCart;
+
+    }
+  }
+
+  function addEventUpdateCartBtn(){
+    var adds       = document.querySelectorAll('.plus-btn');
+    var minuses    = document.querySelectorAll('.minus-btn');
+    var quantities = document.getElementsByName('quantity');
+
+    var i   = 0;
+    var len = adds.length;
+    for(i; i < len; i++){
+      adds[i].addEventListener('click', updateCart);
+      minuses[i].addEventListener('click', updateCart);
+      console.log(quantities[i].value);
+    }
+  }
+
+  function updateCart(){
+    if(cart.length > 0){
+
+    }
 
   }
 
   var addButtons = document.querySelectorAll(".addButton");
-  var i          = 0;
-  for(i; i < addButtons.length; i++){
+  for(var i = 0; i < addButtons.length; i++){
     addButtons[i].addEventListener("click", addToCart, false);
   }
 
+  /****** toggle cart *******/
+  var mainNav   = document.querySelector('.shopping-cart');
+  var navToggle = document.getElementById('cart-total');
+// Start by adding the class "collapse" to the mainNav
+  mainNav.classList.add('collapsed');
+// Establish a function to toggle the class "collapse"
+  function mainNavToggle(){
+    mainNav.classList.toggle('collapsed');
+    createShoppingCart();
+    addEventUpdateCartBtn();
+  }
+
+  navToggle.addEventListener('click', mainNavToggle);
 })
 ();

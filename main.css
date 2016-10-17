@@ -305,7 +305,7 @@ input[type='text']:focus, input[type='password']:focus, textarea:focus {
   padding: 0 0.7rem 0 0.2rem;
 }
 
-#header #cart .heading a span {
+#header #cart .heading a span#cart-total {
   background: url('images/bullet.png') right 1.1rem no-repeat;
   padding-right: 1.2rem;
   display: inline-block;
@@ -533,7 +533,7 @@ a.button:hover, input.addButton:hover {
 }
 
 .image {
-  margin-right: 5rem;
+  margin-right: 2.5rem;
 }
 
 .description {

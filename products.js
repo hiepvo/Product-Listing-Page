@@ -177,7 +177,7 @@
       strCart += '<button id="plus' + cart[i].prod.id + '" class = "plus-btn" type = "button" name = "button">';
       strCart += '<img src = "images/plus.svg" alt = ""/>';
       strCart += '</button>';
-      strCart += '<input type = "text" name = "quantity" value = "' + cart[i].qty + '">';
+      strCart += '<input id="qty' + cart[i].prod.id + '" type = "text" name = "quantity" value = "' + cart[i].qty + '">';
       strCart += '<button id="minus' + cart[i].prod.id + '" class = "minus-btn" type = "button" name = "button">';
       strCart += '<img src = "images/minus.svg" alt = ""/>';
       strCart += '</button>';
@@ -190,23 +190,25 @@
   }
 
   function addEventUpdateCartBtn(){
-    var adds       = document.querySelectorAll('.plus-btn');
-    var minuses    = document.querySelectorAll('.minus-btn');
-    var quantities = document.getElementsByName('quantity');
+    var adds    = document.querySelectorAll('.plus-btn');
+    var minuses = document.querySelectorAll('.minus-btn');
 
     var i   = 0;
     var len = adds.length;
     for(i; i < len; i++){
       adds[i].addEventListener('click', updateCart);
       minuses[i].addEventListener('click', updateCart);
-      console.log(quantities[i].value);
     }
   }
 
   function updateCart(){
-    if(cart.length > 0){
+    var prodId = this.id.substr(4);
+    var type = this.id.substr(0,4);
+    console.log(type);
 
-    }
+    var qtyId    = 'qty' + prodId;
+    var inputQty = document.getElementById(qtyId);
+
 
   }
 

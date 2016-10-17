@@ -590,10 +590,6 @@ button[class*=btn] {
   margin-top: 2px;
 }
 
-button:focus,
-input:focus {
-  outline: 0;
-}
 
 .total-price {
   width: 83px;

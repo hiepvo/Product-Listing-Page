@@ -113,7 +113,7 @@
     var newObj    = {};
     newObj.qty    = 1;
     newObj.prod   = product;
-    total += parseFloat(product.price);
+    //total += parseFloat(product.price);
     if(cart.length > 0){
       var indexOf = searchProduct(this.id);
       if(indexOf > -1){
@@ -126,10 +126,10 @@
     else{
       cart.push(newObj);
     }
-    var price           = document.createTextNode("$" + total.toFixed(2));
-    var item            = document.createTextNode(cart.length.toString());
-    itemSpan.innerText  = item.textContent;
-    priceSpan.innerText = price.textContent
+    //var price           = document.createTextNode("$" + total.toFixed(2));
+    var item           = document.createTextNode(cart.length.toString());
+    itemSpan.innerText = item.textContent;
+    //priceSpan.innerText = price.textContent
   }
 
   //Return index of product in shopping cart. Return -1 if not found
@@ -182,7 +182,7 @@
       strCart += '<img src = "images/minus.svg" alt = ""/>';
       strCart += '</button>';
       strCart += '</div>';
-      strCart += '<div class = "total-price">$' + cart[i].prod.price + '</div>';
+      strCart += '<div id="price' + cart[i].prod.id + '" class = "total-price">$' + cart[i].prod.price + '</div>';
       strCart += '</div>';
       loader.innerHTML = strCart;
 
@@ -202,14 +202,22 @@
   }
 
   function updateCart(){
-    var prodId = this.id.substr(4);
-    var type = this.id.substr(0,4);
-    console.log(type);
-
+    var prodId   = this.id.substr(4);
+    var product  = getProduct(prodId);
+    var type     = this.id.substr(0, 4);
     var qtyId    = 'qty' + prodId;
+    var priceId  = 'price' + prodId;
     var inputQty = document.getElementById(qtyId);
-
-
+    var price    = document.getElementById(priceId);
+    if(type === 'plus'){
+      inputQty.value = parseInt(inputQty.value) + 1;
+      var priceVal   = inputQty.value * (parseFloat(product.price));
+      price.innerText    ='$' + priceVal.toFixed(2).toString();
+    }
+    else if(type === 'minus'){
+      inputQty.value = parseInt(inputQty.value) - 1;
+    }
+    console.log(price.value);
   }
 
   var addButtons = document.querySelectorAll(".addButton");
@@ -230,5 +238,6 @@
   }
 
   navToggle.addEventListener('click', mainNavToggle);
+
 })
 ();

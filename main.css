@@ -46,7 +46,7 @@ h4 {
   font-weight: bold;
 }
 
-a, a:visited, a b {
+a, a:visited, a {
   color: #222;
   text-decoration: none;
   cursor: pointer;
@@ -58,36 +58,6 @@ a:hover {
 
 .clear {
   clear: both;
-}
-
-form {
-  padding: 0;
-  margin: 0;
-  display: inline;
-}
-
-input[type='text'], input[type='password'], textarea {
-  background: #fff;
-  border: 0.1rem solid #dddddd;
-  padding: 0.5rem 0.7rem;
-  margin-left: 0;
-  margin-right: 0;
-  font-size: 1.3rem;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  width: 21.8rem;
-}
-
-input[type='text']:focus, input[type='password']:focus, textarea:focus {
-  border: 0.1rem solid #bbb;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 
 /********** layout **********/
@@ -482,6 +452,7 @@ a.button:hover, input.addButton:hover {
 /*********** shopping cart ***********/
 
 #header .shopping-cart {
+  position: relative;
   width: 76rem;
   height: 45rem;
   margin: 80px auto;
@@ -565,7 +536,6 @@ a.button:hover, input.addButton:hover {
 }
 
 .quantity input {
-  -webkit-appearance: none;
   border: none;
   text-align: center;
   width: 32px;
@@ -586,16 +556,30 @@ button[class*=btn] {
 .minus-btn img {
   margin-bottom: 3px;
 }
+
 .plus-btn img {
   margin-top: 2px;
 }
 
-
 .total-price {
-  width: 83px;
-  padding-top: 27px;
+  width: 8.3rem;
+  padding-top: 2.7rem;
   text-align: center;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: #43484D;
   font-weight: 300;
+}
+
+button:focus, input:focus {
+  outline: 0;
+}
+
+#cartMsg {
+  position: absolute;
+  color: #43484D;
+  font-weight: 300;
+  font-size: 2.5rem;
+  padding-top: 15rem;
+  padding-left: 32rem;
+  font-style: italic;
 }

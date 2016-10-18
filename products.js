@@ -107,17 +107,16 @@
   var total = 0.0;
 
   function addToCart(){
-    var itemSpan  = document.getElementById("totalItems");
-    var priceSpan = document.getElementById("totalPrices");
-    var product   = getProduct(this.id);
-    var newObj    = {};
-    newObj.qty    = 1;
-    newObj.prod   = product;
-    //total += parseFloat(product.price);
+    var itemSpan = document.getElementById("totalItems");
+    var product  = getProduct(this.id);
+    var newObj   = {};
+    newObj.qty   = 1;
+    newObj.prod  = product;
     if(cart.length > 0){
       var indexOf = searchProduct(this.id);
       if(indexOf > -1){
         cart[indexOf].qty += 1;
+        cart[indexOf].prod.price = cart[indexOf].qty * cart[indexOf].prod.price;
       }
       else{
         cart.push(newObj);
@@ -126,10 +125,8 @@
     else{
       cart.push(newObj);
     }
-    //var price           = document.createTextNode("$" + total.toFixed(2));
     var item           = document.createTextNode(cart.length.toString());
     itemSpan.innerText = item.textContent;
-    //priceSpan.innerText = price.textContent
   }
 
   //Return index of product in shopping cart. Return -1 if not found
@@ -156,35 +153,43 @@
     return result;
   }
 
-  function createShoppingCart(){
+  function createCart(){
     var strCart = "";
+    var loader  = document.getElementById('cartLoader');
+    var cartMsg = document.getElementById('cartMsg');
 
-    var loader = document.getElementById('cartLoader');
-    var i      = 0;
-    var len    = cart.length;
-    for(i; i < len; i++){
-      strCart += '<div class = "item">';
-      strCart += '<div class = "buttons">';
-      strCart += '<span class = "delete-btn"></span>';
-      strCart += '</div>';
-      strCart += '<div class = "image">';
-      strCart += '<img src = "http://placehold.it/140x100" alt = ""/>';
-      strCart += '</div>';
-      strCart += '<div class = "description">';
-      strCart += '<span>' + cart[i].prod.desc + '</span>';
-      strCart += '</div>';
-      strCart += '<div class = "quantity">';
-      strCart += '<button id="plus' + cart[i].prod.id + '" class = "plus-btn" type = "button" name = "button">';
-      strCart += '<img src = "images/plus.svg" alt = ""/>';
-      strCart += '</button>';
-      strCart += '<input id="qty' + cart[i].prod.id + '" type = "text" name = "quantity" value = "' + cart[i].qty + '">';
-      strCart += '<button id="minus' + cart[i].prod.id + '" class = "minus-btn" type = "button" name = "button">';
-      strCart += '<img src = "images/minus.svg" alt = ""/>';
-      strCart += '</button>';
-      strCart += '</div>';
-      strCart += '<div id="price' + cart[i].prod.id + '" class = "total-price">$' + cart[i].prod.price + '</div>';
-      strCart += '</div>';
-      loader.innerHTML = strCart;
+    var i   = 0;
+    var len = cart.length;
+    if(len > 0){
+      cartMsg.style.display = 'none';
+      for(i; i < len; i++){
+        strCart += '<div class = "item">';
+        strCart += '<div class = "buttons">';
+        strCart += '<span id="del_' + cart[i].prod.id + '" class = "delete-btn"></span>';
+        strCart += '</div>';
+        strCart += '<div class = "image">';
+        strCart += '<img src = "http://placehold.it/140x100" alt = ""/>';
+        strCart += '</div>';
+        strCart += '<div class = "description">';
+        strCart += '<span>' + cart[i].prod.desc + '</span>';
+        strCart += '</div>';
+        strCart += '<div class = "quantity">';
+        strCart += '<button id="plus_' + cart[i].prod.id + '" class = "plus-btn" type = "button" name = "button">';
+        strCart += '<img src = "images/plus.svg" alt = ""/>';
+        strCart += '</button>';
+        strCart += '<input id="qty_' + cart[i].prod.id + '" type = "text" name = "quantity" value = "' + cart[i].qty + '">';
+        strCart += '<button id="minus_' + cart[i].prod.id + '" class = "minus-btn" type = "button" name = "button">';
+        strCart += '<img src = "images/minus.svg" alt = ""/>';
+        strCart += '</button>';
+        strCart += '</div>';
+        strCart += '<div id="price_' + cart[i].prod.id + '" class = "total-price">$' + cart[i].prod.price + '</div>';
+        strCart += '</div>';
+        loader.innerHTML = strCart;
+      }
+    }
+    else{
+      loader.innerHTML      = '';
+      cartMsg.style.display = 'block';
 
     }
   }
@@ -192,32 +197,49 @@
   function addEventUpdateCartBtn(){
     var adds    = document.querySelectorAll('.plus-btn');
     var minuses = document.querySelectorAll('.minus-btn');
-
-    var i   = 0;
-    var len = adds.length;
+    var del     = document.querySelectorAll('.delete-btn');
+    var i       = 0;
+    var len     = adds.length;
     for(i; i < len; i++){
       adds[i].addEventListener('click', updateCart);
       minuses[i].addEventListener('click', updateCart);
+      del[i].addEventListener('click', removeItemFromCart);
+      del[i].delpara = del[i].id;
     }
   }
 
+  function removeItemFromCart(prodId){
+    var totalItems = document.getElementById('totalItems');
+    cart.splice(searchProduct(prodId), 1);
+    totalItems.innerText = cart.length;
+    createCart();
+    addEventUpdateCartBtn();
+  }
+
   function updateCart(){
-    var prodId   = this.id.substr(4);
+    var prodId   = this.id.substr(this.id.indexOf('_') + 1);
     var product  = getProduct(prodId);
-    var type     = this.id.substr(0, 4);
-    var qtyId    = 'qty' + prodId;
-    var priceId  = 'price' + prodId;
+    var type     = this.id.substr(0, this.id.indexOf('_'));
+    var qtyId    = 'qty_' + prodId;
+    var priceId  = 'price_' + prodId;
     var inputQty = document.getElementById(qtyId);
     var price    = document.getElementById(priceId);
+
     if(type === 'plus'){
-      inputQty.value = parseInt(inputQty.value) + 1;
-      var priceVal   = inputQty.value * (parseFloat(product.price));
-      price.innerText    ='$' + priceVal.toFixed(2).toString();
+      inputQty.value  = parseInt(inputQty.value) + 1;
+      var addVal      = inputQty.value * (parseFloat(product.price));
+      price.innerText = '$' + addVal.toFixed(2).toString();
     }
     else if(type === 'minus'){
       inputQty.value = parseInt(inputQty.value) - 1;
+      if(inputQty.value === '0'){
+        removeItemFromCart(prodId);
+      }
+      else{
+        var minusVal    = inputQty.value * (parseFloat(product.price));
+        price.innerText = '$' + minusVal.toFixed(2).toString();
+      }
     }
-    console.log(price.value);
   }
 
   var addButtons = document.querySelectorAll(".addButton");
@@ -228,12 +250,10 @@
   /****** toggle cart *******/
   var mainNav   = document.querySelector('.shopping-cart');
   var navToggle = document.getElementById('cart-total');
-// Start by adding the class "collapse" to the mainNav
   mainNav.classList.add('collapsed');
-// Establish a function to toggle the class "collapse"
   function mainNavToggle(){
     mainNav.classList.toggle('collapsed');
-    createShoppingCart();
+    createCart();
     addEventUpdateCartBtn();
   }
 

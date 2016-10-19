@@ -249,7 +249,7 @@
 
   /****** toggle cart *******/
   var mainNav   = document.querySelector('.shopping-cart');
-  var navToggle = document.getElementById('cart-total');
+  var navToggle = document.querySelector('.shopping-cart-btn');
   mainNav.classList.add('collapsed');
   function mainNavToggle(){
     mainNav.classList.toggle('collapsed');

@@ -4,14 +4,17 @@
   <meta charset = "UTF-8"/>
   <title>Product Listing Page</title>
   <link rel = "stylesheet" type = "text/css" href = "main.css"/>
+  <link rel = "stylesheet" href = "font-awesome-4.6.3/css/font-awesome.min.css">
+
 
 </head>
 <body>
 <div class = "wrapper-box">
   <div class = "wrapper">
-    <a style = "font-size: 16px; color: #66afe9" href = "index.html">Back to Home page</a>
+    <!--<a style = "font-size: 16px; color: #66afe9" href = "index.html">Back to Home page</a>-->
     <header id = "header">
       <div class = "htop">
+        <!--
         <div id = "language"><span>Language<b></b></span>
           <ul>
             <li><a title = "English"><img src = "images/flags/gb.png" alt = "English"/>English</a></li>
@@ -23,41 +26,50 @@
             <li><a title = "Euro">€ - Euro</a></li>
             <li><a title = "US Dollar"><b>$ - US Dollar</b></a></li>
           </ul>
+        </div>-->
+        <div id = "logo"><a href = "index.html"><img src = "http://placehold.it/250x60" title = "logo" alt = ""/></a>
         </div>
+
+        <div class = "shopping-cart-wrapper">
+          <a class="shopping-cart-btn"><i class = "fa fa-shopping-cart"></i><p>Shopping Bag</p><span id = "totalItems">0</span></a>
+          <div class = "shopping-cart" id = "shopping-cart">
+            <!-- Title -->
+            <div class = "title">
+              Shopping Cart
+            </div>
+            <!-- Product #1 -->
+            <div id = "cartLoader"></div>
+            <span id = "cartMsg">Empty Cart</span>
+          </div>
+        </div>
+        <ul class = "navmenu">
+          <li><a href = "#">Login</a></li>
+          <li><a href = "">Register</a></li>
+          <li><a href = "#">My Account</a></li>
+          <li><a href = "">Checkout</a></li>
+        </ul>
+        <!--
         <div class = "links"><a href = "">Login</a> <a href = "">Register</a> <a href = "#">My
-          Account</a> <a href = "">Checkout</a></div>
+          Account</a> <a href = "">Checkout</a></div>-->
       </div>
-      <section class = "hsecond">
-        <div id = "logo"><a href = "index.html"><img src = "http://placehold.it/250x90" title = "logo" alt = ""/></a>
-        </div>
+      <!--<section class = "hsecond">
+
+
         <div id = "search">
           <div class = "button-search"></div>
           <input type = "text" name = "search" placeholder = "Search" value = ""/>
         </div>
-        <section id = "cart">
-          <div class = "heading">
-            <h4><img width = "32" height = "32" alt = "" src = "images/cart-bg.png"></h4>
-            <a><span id = "cart-total"><span id = "totalItems">0</span> item(s) </span></a></div>
-        </section>
-        <div class = "shopping-cart" id="shopping-cart">
-          <!-- Title -->
-          <div class = "title">
-            Shopping Cart
-          </div>
-          <!-- Product #1 -->
-          <div id = "cartLoader"></div>
-          <span id="cartMsg">Empty Cart</span>
-        </div>
 
-        <div class = "clear"></div>
-      </section>
+
+      </section>-->
+      <div class = "clear"></div>
     </header>
     <div id = "container">
       <section>
-        <div class = "logo"><a href = "#"><img src = "http://placehold.it/1000x350" alt = ""/> </a></div>
+        <div class = "logo"><a href = "#"><img src = "http://placehold.it/1170x350" alt = ""/> </a></div>
       </section>
-      <div class = "heading-welcome">Welcome to iShopping</div>
-      <p id = "welcome-desc"><strong>iShopping</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+      <div class = "heading-welcome">Welcome to iStore</div>
+      <p id = "welcome-desc"><strong>iStore</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
         ornare lectus nunc,
         nec rhoncus libero mattis sed. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ut
         sollicitudin purus. Sed sagittis libero urna, sit amet sagittis nisl efficitur sed. Quisque laoreet et nulla

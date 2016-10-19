@@ -8,7 +8,7 @@ html {
 
 /*noinspection ALL*/
 body {
-  background: #f8f8fa url(images/pattern1.jpg) left top repeat;
+  /*background: #f8f8fa url(images/pattern1.jpg) left top repeat;*/
   color: #222;
   margin: 0;
   padding: 0;
@@ -60,18 +60,118 @@ a:hover {
   clear: both;
 }
 
+/********** Menu **********/
+.navmenu {
+  padding-top: 2rem;
+  float: right;
+}
+
+.navmenu li {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 0 -3px;
+}
+
+.navmenu li a {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 20px 16px;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 20px;
+  font-size: 13px;
+  color: #333;
+  transition: none;
+  -webkit-transition: none;
+}
+
+.navmenu li:hover a, .navmenu li.active a {
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #e9e9e9;
+  border-right: 1px solid #e9e9e9;
+}
+
+.navmenu li:hover a:before, .navmenu li.active a:before, .navmenu li:hover a:after, .navmenu li.active a:after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: -2px;
+  height: 2px;
+  background-color: #333;
+}
+
+.navmenu li:hover a:after, .navmenu li.active a:after {
+  top: auto;
+  bottom: -2px;
+}
+
+.shopping-cart-wrapper {
+  float: right;
+  position: relative;
+}
+
+.shopping-cart-wrapper .shopping-cart-btn {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 5.4rem 2rem 2rem 2rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  color: #333;
+  transition: none;
+  -webkit-transition: none;
+}
+
+.shopping-cart-btn i {
+  padding-right: 5px;
+}
+
+.shopping-cart-wrapper .shopping-cart-btn p {
+  display: inline-block;
+  margin: 0;
+}
+span#totalItems {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 6px;
+  font-weight: 900;
+  font-size: 13px;
+  color: #fff;
+  background-color: #cc3333;
+}
+/*
+.shopping-cart-wrapper .shopping-cart-btn:hover:before {
+  top: auto;
+  bottom: -2px;
+}
+
+.shopping-cart-wrapper .shopping-cart-btn:hover:before, .shopping-cart-wrapper .shopping-cart-btn:hover:after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: -2px;
+  height: 2px;
+  background-color: #333;
+}
+*/
 /********** layout **********/
 
 .wrapper-box {
-  max-width: 108rem;
-  margin: 2rem auto;
+  width: 100%;
+  /*max-width: 108rem;*/
+  margin: 0 auto;
   background: #ffffff;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-  border-top: 0.2rem solid #555555;
+  /*box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  border-top: 0.2rem solid #555555;*/
 }
 
 .wrapper {
-  max-width: 100rem;
   margin: 0 auto;
   position: relative;
 }
@@ -97,8 +197,14 @@ a:hover {
   height: 0;
 }
 
+/*
 #header .htop {
   border-bottom: 0.1rem solid #eeeeee;
+}
+*/
+#header .htop {
+  width: 117rem;
+  margin: 0 auto;
 }
 
 #header .htop:after {
@@ -370,8 +476,7 @@ a.button:hover, input.addButton:hover {
 /*********** box ***********/
 
 .heading-welcome {
-  padding: 0 0 0 0;
-  margin-bottom: 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   height: 3rem;
   line-height: 3rem;
   font-size: 2rem;
@@ -384,6 +489,8 @@ a.button:hover, input.addButton:hover {
 #welcome-desc {
   text-align: left;
   font-size: 1.8rem;
+  padding: 0 2rem 2rem 2rem;
+
 }
 
 /*********** box products ***********/
@@ -455,7 +562,7 @@ a.button:hover, input.addButton:hover {
   position: relative;
   width: 76rem;
   height: 45rem;
-  margin: 80px auto;
+  margin: 0 auto;
   background: #FFFFFF;
   box-shadow: 0.1rem 0.2rem 0.3rem 0 rgba(0, 0, 0, 0.10);
   border-radius: 0.6rem;

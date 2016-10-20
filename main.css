@@ -135,6 +135,7 @@ a:hover {
   display: inline-block;
   margin: 0;
 }
+
 span#totalItems {
   display: inline-block;
   margin-left: 5px;
@@ -144,6 +145,7 @@ span#totalItems {
   color: #fff;
   background-color: #cc3333;
 }
+
 /*
 .shopping-cart-wrapper .shopping-cart-btn:hover:before {
   top: auto;
@@ -580,7 +582,8 @@ a.button:hover, input.addButton:hover {
 
 .title {
   height: 2rem;
-  border-bottom: 1px solid #E1E8EE;
+  /*border-bottom: 1px solid #E1E8EE;*/
+  border-bottom: 1px solid #e6e7e8;
   padding: 2rem 3rem;
   color: #5E6977;
   font-size: 2.5rem;
@@ -668,7 +671,27 @@ button[class*=btn] {
   margin-top: 2px;
 }
 
+.heading-price {
+  float: right;
+  padding-right: 5rem;
+  padding-top: 2rem;
+  font-size: 1.5rem;
+  color: #43484D;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .total-price {
+  float: right;
+  font-weight: bold;
+  padding-right: 5rem;
+  padding-top: 2rem;
+  font-size: 1.5rem;
+  color: #43484D;
+
+}
+
+.checkout-price {
   width: 8.3rem;
   padding-top: 2.7rem;
   text-align: center;
@@ -689,4 +712,62 @@ button:focus, input:focus {
   padding-top: 15rem;
   padding-left: 32rem;
   font-style: italic;
+}
+
+#shopping-cart .paypal-image {
+  float: right;
+}
+
+.pd-r-2rem {
+  padding-right: 2rem;
+}
+
+.pd-b-2rem {
+  padding-bottom: 2rem;
+}
+.sep {
+  border-top: 1px solid #e6e7e8;
+  width: 100%;
+}
+
+.checkout {
+  padding-left: 1rem;
+  padding-bottom: 3rem;
+  padding-top: 2rem;
+  display: flex;
+  width: 50%;
+}
+
+input[type='text'] {
+  background-color: #fafafa;
+  color: #6c6d71;
+}
+
+.promo-input {
+  border: 1px solid #e6e7e8;
+  display: block;
+  font-family: inherit;
+  font-size: 1.3rem;
+  height: 2rem;
+  padding: 0.6rem;
+}
+
+.promo-input:focus {
+  border: 1px solid #292929;
+}
+
+button#apply-promo-btn {
+  background-color: #292929;
+  border: 0;
+  color: #fff;
+  font-family: "AvenirNextLTPro-Demi", Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }

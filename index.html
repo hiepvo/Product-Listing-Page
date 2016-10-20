@@ -31,14 +31,25 @@
         </div>
 
         <div class = "shopping-cart-wrapper">
-          <a class="shopping-cart-btn"><i class = "fa fa-shopping-cart"></i><p>Shopping Bag</p><span id = "totalItems">0</span></a>
+          <a class = "shopping-cart-btn"><i class = "fa fa-shopping-cart"></i>
+            <p>Shopping Bag</p><span id = "totalItems">0</span></a>
           <div class = "shopping-cart" id = "shopping-cart">
             <!-- Title -->
             <div class = "title">
-              Shopping Cart
+              My Bag
+              <input class = "paypal-image" type = "image" src = "images/paypal_btn.png">
             </div>
-            <!-- Product #1 -->
+
             <div id = "cartLoader"></div>
+            <div class="checkout-wrapper">
+              <span class = "total-price"></span><span class = "heading-price">total</span>
+              <div class = "sep"></div>
+              <div class = "checkout">
+                <input class = "promo-input" type = "text" autocomplete = "off" placeholder = "Promo Code">
+                <button id = "apply-promo-btn">apply</button>
+              </div>
+              <input class = "paypal-image pd-r-2rem pd-b-2rem" type = "image" src = "images/paypal_btn.png">
+            </div>
             <span id = "cartMsg">Empty Cart</span>
           </div>
         </div>

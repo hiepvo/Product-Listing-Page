@@ -113,7 +113,7 @@
     newObj.qty   = 1;
     newObj.prod  = product;
     if(cart.length > 0){
-      var indexOf = searchProduct(this.id);
+      var indexOf = searchProductInCart(this.id);
       if(indexOf > -1){
         cart[indexOf].qty += 1;
         cart[indexOf].prod.price = cart[indexOf].qty * cart[indexOf].prod.price;
@@ -130,7 +130,7 @@
   }
 
   //Return index of product in shopping cart. Return -1 if not found
-  function searchProduct(id){
+  function searchProductInCart(id){
     var i   = 0;
     var len = cart.length;
     for(i; i < len; i++){
@@ -154,14 +154,18 @@
   }
 
   function createCart(){
-    var strCart = "";
-    var loader  = document.getElementById('cartLoader');
-    var cartMsg = document.getElementById('cartMsg');
+    var strCart  = "";
+    var loader   = document.getElementById('cartLoader');
+    var cartMsg  = document.getElementById('cartMsg');
+    var checkout = document.querySelector('.checkout-wrapper')
+    var paypal   = document.querySelector('.paypal-image');
 
     var i   = 0;
     var len = cart.length;
     if(len > 0){
-      cartMsg.style.display = 'none';
+      checkout.style.display = 'block';
+      paypal.style.display   = 'block';
+      cartMsg.style.display  = 'none';
       for(i; i < len; i++){
         strCart += '<div class = "item">';
         strCart += '<div class = "buttons">';
@@ -182,16 +186,33 @@
         strCart += '<img src = "images/minus.svg" alt = ""/>';
         strCart += '</button>';
         strCart += '</div>';
-        strCart += '<div id="price_' + cart[i].prod.id + '" class = "total-price">$' + cart[i].prod.price + '</div>';
+        strCart += '<div id="price_' + cart[i].prod.id + '" class = "checkout-price">$' + cart[i].prod.price + '</div>';
         strCart += '</div>';
         loader.innerHTML = strCart;
+        updateTotal();
       }
-    }
-    else{
-      loader.innerHTML      = '';
-      cartMsg.style.display = 'block';
 
     }
+    else{
+      loader.innerHTML       = '';
+      cartMsg.style.display  = 'block';
+      checkout.style.display = 'none';
+      paypal.style.display   = 'none';
+    }
+  }
+
+  function updateTotal(){
+    var total = document.querySelector('.total-price');
+    var val   = 0;
+    var i     = 0;
+    var len   = cart.length;
+    if(len > 0){
+      for(i; i < len; i++){
+        val += cart[i].prod.price * cart[i].qty;
+      }
+    }
+    var text        = document.createTextNode('' + val.toFixed(2));
+    total.innerText = text.textContent;
   }
 
   function addEventUpdateCartBtn(){
@@ -210,7 +231,7 @@
 
   function removeItemFromCart(prodId){
     var totalItems = document.getElementById('totalItems');
-    cart.splice(searchProduct(prodId), 1);
+    cart.splice(searchProductInCart(prodId), 1);
     totalItems.innerText = cart.length;
     createCart();
     addEventUpdateCartBtn();
@@ -224,7 +245,7 @@
     var priceId  = 'price_' + prodId;
     var inputQty = document.getElementById(qtyId);
     var price    = document.getElementById(priceId);
-
+    var indexOf  = searchProductInCart(prodId);
     if(type === 'plus'){
       inputQty.value  = parseInt(inputQty.value) + 1;
       var addVal      = inputQty.value * (parseFloat(product.price));
@@ -240,6 +261,8 @@
         price.innerText = '$' + minusVal.toFixed(2).toString();
       }
     }
+    cart[indexOf].qty = inputQty.value;
+    updateTotal();
   }
 
   var addButtons = document.querySelectorAll(".addButton");

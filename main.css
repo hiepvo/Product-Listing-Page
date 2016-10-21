@@ -770,4 +770,9 @@ button#apply-promo-btn {
   margin-left: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  cursor: pointer;
+}
+
+button#apply-promo-btn:hover {
+  background-color:#333;
 }

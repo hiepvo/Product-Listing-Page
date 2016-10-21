@@ -188,6 +188,7 @@
         strCart += '</div>';
         strCart += '<div id="price_' + cart[i].prod.id + '" class = "checkout-price">$' + cart[i].prod.price + '</div>';
         strCart += '</div>';
+        strCart += '<div class="sep"></div>';
         loader.innerHTML = strCart;
         updateTotal();
       }
@@ -211,7 +212,7 @@
         val += cart[i].prod.price * cart[i].qty;
       }
     }
-    var text        = document.createTextNode('' + val.toFixed(2));
+    var text        = document.createTextNode('$' + val.toFixed(2));
     total.innerText = text.textContent;
   }
 
